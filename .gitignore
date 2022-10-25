@@ -1,0 +1,96 @@
+.DS_Store
+3_handed_passing_trimmed.mp4
+531_function.png
+531_permutation.png
+coordinate_changes.py
+Diagram_Chase.mov
+horizontal_band_isolated.jpeg
+lattice.py
+matrix_computations.py
+mult_dim_example_descended.jpeg
+mult_dim_example.jpeg
+multi_dim_horizontal_band.jpeg
+multi_dim_vertical_band.jpeg
+multi_dimensional_bib.bib
+Multi-Dimensional Siteswaps.aux
+Multi-Dimensional Siteswaps.bbl
+Multi-Dimensional Siteswaps.blg
+Multi-Dimensional Siteswaps.log
+Multi-Dimensional Siteswaps.out
+Multi-Dimensional Siteswaps.synctex.gz
+Multi-Dimensional Siteswaps.tex
+Multi-Dimensional Siteswaps.toc
+siteswap_diagram.py
+TwoDimSiteswapCoordinateChange.py
+vertical_band_isolated.jpeg
+__pycache__/lattice.cpython-38.pyc
+__pycache__/lattice.cpython-310.pyc
+Diagonal Example/.DS_Store
+Diagonal Example/Diagonal Example.aux
+Diagonal Example/Diagonal Example.log
+Diagonal Example/Diagonal Example.out
+Diagonal Example/Diagonal Example.pdf
+Diagonal Example/Diagonal Example.synctex.gz
+Diagonal Example/Diagonal Example.tex
+Diagonal Example/diagonal_band_identifications.jpeg
+Diagonal Example/diagonal_multiplex.jpeg
+Diagonal Example/diagonal_permutation.jpeg
+Diagonal Example/diagonal_picture_band.jpeg
+Diagonal Example/diagonal_picture.jpeg
+Diagonal Example/diagonal_points.jpeg
+Diagonal Example/rectangular_band_identifications.jpeg
+Diagonal Example/rectangular_multipliex.PNG
+Diagonal Example/rectangular_picture_band.jpeg
+Diagonal Example/rectangular_picture.jpeg
+media/images/lattice/LinearTransformation3D_ManimCE_v0.16.0.post0.png
+media/images/TwoDimSiteswapCoordinateChange/CoordChange_ManimCE_v0.16.0.post0.png
+media/Tex/40dc4ae30d7b31c4.aux
+media/Tex/40dc4ae30d7b31c4.dvi
+media/Tex/40dc4ae30d7b31c4.log
+media/Tex/40dc4ae30d7b31c4.svg
+media/Tex/40dc4ae30d7b31c4.tex
+media/Tex/049324c46070fc62.aux
+media/Tex/049324c46070fc62.dvi
+media/Tex/049324c46070fc62.log
+media/Tex/049324c46070fc62.svg
+media/Tex/049324c46070fc62.tex
+media/videos/lattice/.DS_Store
+media/videos/lattice/480p15/LinearTransformation3D.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_847107037_1929958938.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_1309864910_1030611969.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_1850327355_2434590023.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_2988808476_155369157.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_3368315225_3381384407.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/3258142_4270972471_1929958938.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/512584122_3931201982_388250705.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/512584122_3931201982_2299115314.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/512584122_3931201982_2436361721.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1360997928_791369299_1579861727.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1360997928_2227282074_1550880906.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1360997928_2227282074_3240642220.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1360997928_2916324229_72364429.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1489733756_896114108_1597995678.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1489733756_2639341598_193913171.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/1489733756_2639341598_4189554972.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_1513025741_514030040.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_2256111766_516744854.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_987722400.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_1812168229.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_2445310696.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_2966836009.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_3432518925.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_3520278797.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_3837410560.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_4091120757.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/4128693572_3376543400_4220808390.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/partial_movie_file_list.txt
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/uncached_00000.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/uncached_00001.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/uncached_00002.mp4
+media/videos/lattice/480p15/partial_movie_files/LinearTransformation3D/uncached_00003.mp4
+media/videos/lattice/720p30/LinearTransformation3D.mp4
+media/videos/lattice/720p30/partial_movie_files/LinearTransformation3D/partial_movie_file_list.txt
+media/videos/lattice/720p30/partial_movie_files/LinearTransformation3D/uncached_00000.mp4
+media/videos/lattice/720p30/partial_movie_files/LinearTransformation3D/uncached_00001.mp4
+media/videos/lattice/720p30/partial_movie_files/LinearTransformation3D/uncached_00002.mp4
+media/videos/lattice/720p30/partial_movie_files/LinearTransformation3D/uncached_00003.mp4
