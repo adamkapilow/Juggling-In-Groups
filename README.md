@@ -1,0 +1,3 @@
+# Juggling in Groups
+
+This paper is an attempt at abstracting the ideas of mathematical juggling patterns into the setting of groups and group actions. After developing the general theory, we prove the correct generalization of the average theorem for juggling patterns (a kind of averaging over the group), and generalize the Ehrenborg-Readdy correspondence with affine permutations in the context of juggling patterns on a group. We end with an application to multi-dimensional siteswaps, juggling patterns where time moves in multiple dimensions. 
