@@ -977,6 +977,145 @@ We can get some nice geometry by focusing on transpositions. Fix $\ol{x}, \ol{y}
 
 Indeed, $\widetilde{S}^2 = \id$, so we just need to show that the fixed points of the action by $\widetilde{S}$ are exactly this hyperplane. Indeed, $\widetilde{S}$ exchanges the coordinates $C_{\ol{x}}$ and $C_{\ol{y}}$ and leaves the other coordinates unchanged, so we see that the fixed points are exactly those points where these two coordinates are equal, which is exactly the given hyperplane.
 
+\begin{subsection}{Conjugacy Classes}
+
+	Recall that conjugacy classes in $S_n$ are intimately connected with orbit decompositions. We attempt to tell the same story for siteswaps, since siteswaps are defined by their action on $G$, and as we've seen in the averae theorem the decomposition into orbits there can be very meaningful.
+	
+	Here we let $G$ be an abelian group, and $H$ a subgroup with $G/H$ finite. Let $P : \op{Swap}_H(G) \to \op{Perm}(G/H)$ be the projection homomorphism. Let $S \in \op{Swap}_H(G)$, and let $\wt{S} = P(S)$. The sets $\pi^{-1}(\ol{\cM})$ with $\ol{\cM}$ an orbit of $\wt{S}$ form a partition of $G$ which is preserved by the action of $S$. As such, for any orbit $\ol{\cM}$ of $\wt{S}$ we may define $S_{\ol{\cM}} : G \to G$ by
+	\[
+		S_{\ol{\cM}}(x) = \begin{cases}
+			S(x) & \text{if } x \in \pi^{-1}(\ol{\cM}) \\
+			x & \text{otherwise.}
+		\end{cases}
+	\]
+	These are $H$-equivariant siteswaps which commute with each other and satisfy
+	\[
+		S = \prod \limits_{\ol{\cM}} S_{\ol{\cM}}.
+	\]
+	Furthermore, we have that $P(S_{\ol{\cM}})$ is a single cycle on $G/H$, acting on $\ol{\cM}$.
+	Now let $A \in \op{Swap}_H(G)$ be arbitrary. Then we have
+	\[
+		A^{-1}SA = \prod \limits_{\ol{\cM}} A^{-1}S_{\ol{\cM}}A
+	\]
+	Since conjugation is a homomorphism, it preserves commutativity of elements. Furthermore, we have that
+	\[
+		\wt{B} := P(A^{-1}S_{\ol{\cM}}A) = P(A)^{-1}\wt{S}_{\ol{\cM}}P(A).
+	\]
+	Then we have that $\wt{B}$ is a single cycle of the same order as $\wt{S}_{\ol{\cM}}$ on $\ol{\cO} := P(A)(\ol{\cM})$. Furthermore we have that
+	\begin{align*}
+		\op{Sum}(A^{-1}S_{\ol{\cM}}A) &= \op{Sum}(A)^{-1}\op{Sum}(S_{\ol{\cM}}) \op{Sum}(A) \\
+			&= \op{Sum}(S_{\ol{\cM}})
+	\end{align*}
+	since the sum homomorphism has values in an abelian group.
+
+	This shows that conjugate siteswaps induce conjugate permutations, in such a way that map on orbits given by conjugation preserves throw sums. It turns out that the reverse is true as well. 
+
+	\begin{theorem}
+		Let $A, B \in \op{Swap}_H(G)$, and let $P : \op{Swap}_H(G) \to \op{Perm}(G/H)$ send a siteswap to its associated permutation on $G/H$. Then $A$ and $B$ are conjugate in $\op{Swap}_H(G)$ if and only if there is some $\gamma \in \op{Perm}(G/H)$ with $P(A) = \gamma^{-1}P(B)\gamma$ where for any orbit $\ol{\cM}$ of $P(A)$, we have that $\ol{\cM}$ and $\gamma(\ol{\cM})$ have the same sum of throw heights.
+		
+		That is, two siteswaps are conjugate if and only if they induce conjugate permutations with the same number of balls in each orbit.
+	\end{theorem}
+
+	\begin{proof}
+		The "only if" direction was proven above. Now we prove that reverse direction, namely that if $A, B \in \op{Swap}_H(G)$ are two siteswaps with $P(A)$ and $P(B)$ conjugate in such a way that the conjugation preserves the sum of throw heights on each orbit, then $A$ and $B$ are conjugate siteswaps. 
+
+Indeed, suppose $P(A) = \gamma^{-1}P(B)\gamma$ for some $\gamma \in \op{Perm}(G/H)$. We will build an element $C \in \op{Swap}_H(G)$ such that $A = C^{-1}BC$. 
+
+Throughout, let 
+\begin{align*}
+	\wt{A} &= P(A) \\
+	\wt{B} &= P(B)
+\end{align*}
+
+To motivate what follows, suppose we had such a $C$, and fix an $x_0 \in G$. Then since conjugation is a homomorphism, we would have for any integer $k$ that
+\[
+	C \circ A^k(x_0) = B^k \circ C(x_0)
+\]
+So we will build a $C$ satisfying this property over a choice of $x_0$ ranging over the orbits of $A$.
+
+To do this, let's first define sections $\sigma, \tau: G/H \to G$ suited to this situation. For each orbit $\ol{\cM}$ of $A$, fix an element $\ol{x}_{\ol{\cM}} \in \ol{\cM}$, and define $\sigma(\ol{x}_{\ol{\cM}} ) = x_{\ol{\cM}}$ arbitrarily. Note that for $0 \leq r < |\ol{\cM}|$ the elements $\wt{A}^r(\ol{x}_{\ol{\cM}})$ are all distinct and exhaust $\ol{\cM}$, so we may define $\sigma$ on $\ol{\cM}$ so that
+\[
+	\sigma \circ \wt{A}^r(\ol{x}_{\ol{\cM}}) := A^r \circ \sigma(\ol{x}_{\ol{\cM}}).
+\] 
+
+Note that this is a section, as by definition of $\wt{A}$ we have
+\begin{align*}
+	\pi \circ A^r \circ \sigma(\ol{x}_{\ol{\cM}}) &= \wt{A}^r \circ \pi \circ \sigma(\ol{x}_{\ol{\cM}}) \\
+	&= \wt{A}^r(\ol{x}_{\ol{\cM}}).
+\end{align*}
+% Recall from the main body of the text that
+% \begin{align*}
+% 	A^{|\ol{\cM}|} \circ \sigma(\ol{x}_{\ol{\cM}}) = \sigma(\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM}).
+% 	% A \circ \sigma \circ \wt{A}^{-1}(\ol{x}_{\ol{\cM}}) &= A \circ \sigma \circ \wt{A}^{|\ol{\cM}| - 1}(\ol{x}_{\ol{\cM}}) \\
+% 	% &= A \circ A^{|\ol{\cM}| - 1} \circ \sigma(\ol{x}_{\ol{\cM}})  \\
+% 	% &= A^{|\ol{\cM}|} \circ \sigma (\ol{x}_{\ol{\cM}}) \\
+% 	% &= \sigma(\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM}).
+% \end{align*}
+
+% Iterating this, if $k = |\ol{\cM}|\cdot q + r$ with $0 \leq r < |\ol{\cM}|$ then we have that 
+% \begin{align*}
+% 	A^k \circ \sigma(\ol{x}_{\ol{\cM}}) &= \sigma \circ \wt{A}^k(\ol{x}_{\ol{\cM}}) + q \op{Sum}(\ol{\cM}) \\
+% 	&= \sigma \circ \wt{A}^r(\ol{x}_{\ol{\cM}}) + q \op{Sum}(\ol{\cM})
+% \end{align*}
+
+Define $\tau$ similarly, picking $\tau(\gamma(\ol{x}_{\ol{\cM}}))$ arbitrarily and defining $\tau$ based on that element, so that $\tau$ commutes with $B$ appropriately on the orbit $\ol{\cO} := \gamma(\ol{\cM}).$ The fact that $\gamma$ conjugates $B$ to $A$ yields that as $\ol{\cM}$ ranges over the orbits of $A$, $\gamma(\ol{\cM})$ ranges over the orbits of $B$, and so $\tau$ is well defined. 
+
+With these sections in play, we define $C : G \to G$ to be the unique $H$-equivariant map satisfying
+\[
+	C \circ \sigma = \tau \circ \gamma.
+\]
+The same methods as in the main body of the paper show that $C$ is a well-defined bijection with $P(C) = \gamma$. \footnote{If you like, you can first define $D$ so that $D \circ \sigma = \sigma \circ \gamma$ directly as in the paper, and then note that $\tau = R \circ \sigma$ for some $H$-invariant $R$ inducing the identity permutation on $G/H$ as $\tau(\ol{x}) = \sigma(\ol{x}) + h $ for some $h \in H$ depending on $\ol{x}$. Then we can define $C = R \circ D$. } I claim that in fact $A = C^{-1}BC$. We will verify this separately on each set $\pi^{-1}(\ol{\cM})$, as $G$ is the disjoint union of these preimages. 
+
+For each such preimage, note that by $H$-equivariance, it suffices to show that $C \circ A = B \circ C$ on $\sigma(\ol{\cM})$, as every other element in $\pi^{-1}(\ol{\cM})$ is of the form $\sigma(x) + h$ for some $h \in H$ and $x \in \ol{\cM}$.
+
+To do this, first let $0 \leq r < |\ol{\cM}| - 1$ and compute 
+\begin{align*}
+	C \circ A \circ \sigma \circ \wt{A}^r(\ol{x}_{\ol{\cM}}) &= C \circ A \circ A^r \circ \sigma(\ol{x}_{\ol{\cM}}) \\
+		&= C \circ A^{r + 1} \circ \sigma (\ol{x}_{\ol{\cM}}) \\
+		&= C \circ \sigma \circ \wt{A}^{r + 1}(\ol{x}_{\ol{\cM}}) && \text{(as $r + 1 < |\ol{\cM}|$)} \\
+		&= \tau \circ \gamma \circ \wt{A}^{r + 1}(\ol{x}_{\ol{\cM}}) \\
+		&= \tau \circ \wt{B}^{r + 1} \circ \gamma(\ol{x}_{\ol{\cM}}) && (\text{as } \wt{A} = \gamma^{-1}\wt{B}\gamma) \\
+		&=\tau \circ \wt{B} \circ \wt{B}^r \circ \gamma(\ol{x}_{\ol{\cM}}) \\
+		&= B \circ \tau \circ \wt{B}^r \circ \gamma(\ol{x}_{\ol{\cM}}) && (\text{as } r + 1 < |\ol{\cO}|)\\
+		&= B \circ \tau \circ \gamma \circ \wt{A}^r(\ol{x}_{\ol{\cM}}) && (\text{as } A = \gamma^{-1}B\gamma) \\
+		&= B \circ C \circ \sigma \circ \wt{A}^r(\ol{x}_{\ol{\cM}}).
+\end{align*}
+
+Thus, $C \circ A$ and $B \circ C$ agree on all these elements.The only element remaining in $\ol{\cM}$ is $\wt{A}^{|\ol{\cM}| - 1}(\ol{x}_{\ol{\cM}})$. For this, we compute
+
+\begin{align*}
+	C \circ A \circ \sigma \circ \wt{A}^{|\ol{\cM}| - 1}(\ol{x}_{\ol{\cM}}) &= C \circ A \circ A^{|\ol{\cM}| - 1} \circ \sigma(\ol{x}_{\ol{\cM}}) \\
+		&= C \circ A^{|\ol{\cM}|} \circ \sigma (\ol{x}_{\ol{\cM}}) \\
+		&= C  \Big( \sigma (\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM}) \Big) \\
+		&= C \circ \sigma (\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM}) && (H-\text{equivariance})\\
+		&= \tau \circ \gamma(\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM})
+\end{align*}
+Similarly, we compute
+\begin{align*}
+	B \circ C \circ \sigma \circ \wt{A}^{|\ol{\cM}| - 1}(\ol{x}_{\ol{\cM}}) &=  B \circ \tau \circ \gamma \circ \wt{A}^{|\ol{\cM}| - 1}(\ol{x}_{\ol{\cM}}) \\
+	&= B \circ \tau \circ \wt{B}^{|\ol{\cM}| - 1} \circ \gamma (\ol{x}_{\ol{\cM}}) \\
+	&= B \circ B^{|\ol{\cM}| - 1} \circ \tau \circ \gamma (\ol{x}_{\ol{\cM}}) \\
+	&= B^{|\ol{\cM}|} \circ \tau \circ \gamma(\ol{x}_{\ol{\cM}}) \\
+	&= B^{|\ol{\cO}|} \circ \tau \circ \gamma(\ol{x}_{\ol{\cM}}) \\
+	&= \tau \circ \gamma (\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cO}) \\
+	&= \tau \circ \gamma (\ol{x}_{\ol{\cM}}) + \op{Sum}(\ol{\cM}) 
+\end{align*}
+where the last equality holds by assumption that $\gamma$ preserves the sums of throw heights on orbits. Thus, $C \circ A$ and $B \circ C$ also agree on this element, and so they agree everywhere on $\pi^{-1}(\ol{\cM})$, as desired.
+
+\end{proof}
+
+As a consequence of this result, we can obtain a set of representatives for conjugacy classes in $\op{Swap}_H(G)$, a kind of canonical form. Let $R$ be a set of representatives for conjugacy classes in $\op{Perm}(G/H)$. In the case $G = \Z$ and $H = n\Z$ so $G/H = \Z/n$ a common choice is to pick a partition of $n$, and fill the corresponding Young tableux with the integers from $1$ to $n$ in ascending order left to right, and then interpret each row in the tableux as a cycle in the permutation. 
+Then any section $f : \op{Perm}(G/H) \to \op{Swap}_H(G)$ as given in the main body of the paper yields siteswaps with throw heights summing to zero. Furthermore, for any $r \in R$ we have that $r = \prod \limits_{\ol{\cM}} r_{\ol{\cM}}$ as a product of disjoint cycles over the orbits of $r$. And we have $f(r) = \prod \limits_{\ol{\cM}} f(r_{\ol{\cM}})$. Let $\varphi : \op{Orb}(r) \to G/H$ be such that $\varphi(\ol{\cM}) \in \ol{\cM}$. For any function $g : \op{Orb}(r) \to H$ we can define a siteswap $S : G \to G$ with throw heights $T : G/H \to G$ given by 
+\[
+	T(x) = \begin{cases}
+		g(\ol{\cM}) & \text{if } x = \varphi(\ol{\cM}) \\
+		0 & \text{otherwise}
+	\end{cases}
+\]
+Then we have that $f(r) \circ S$ induces the same permutation as $r$, but with throw sum function given by $g$. I claim that these form a set of conjugacy class representatives for $\op{Swap}_H(G)$.
+
+Thus, if $A$ is an aribtrary siteswap, then we know that $P(A)$ is conjugate to exactly one $r \in R$. If we let $S$ be constructed as above with $g$ the throw heights function of $A$ then the results of this lemma apply to $A$ and $f(r) \circ S$ and so these siteswaps are conjugate, as desired.
+
 \begin{subsection}{An Example}
 Let's work through one of these groups in a manner similar to affine permutations. Let's let $G = \Z^2$, and let $H = n\Z \times m\Z$. Then we have that $G/H \cong \Z/n \times \Z/m$, and so $|G/H| = nm$. We may think of throws as vectors pointing from the throw's origin to the throw's destination. The action of $\op{Perm}(G/H)$ is then by permuting these vectors. 
 
@@ -1028,7 +1167,7 @@ G\ar[d, "\pi_K"'] \ar[dr, "\pi_H"] \ar[r, "\pi_N"] & G/N \ar[d, "\pi_{KN}"] \\
 G/K \ar[r, "\pi_{NK}"'] & G/H
 \end{tikzcd}
 \]
-Let $S : G \to G$ be an $H$-equivariant bijection (so it's also $K$-equivariant). Let $\mathcal{O}$ be an orbit of $S$. Then the stabilizer of $\mathcal{O}$ under the action by $H$ given is by the average theorem equal to $\op{Sum}(\pi_H(\ol{\mathcal{O}})) \in H$. Since $H = N \oplus K$ we have that $\op{Sum}(\pi_H(\ol{\mathcal{O}})) = n_0 + k_0$ for unique $n_0 \in N, k_0 \in K$. 
+Let $S : G \to G$ be an $H$-equivariant bijection (so it's also $K$-equivariant). Let $\mathcal{O}$ be an orbit of $S$. Then the stabilizer of $\mathcal{O}$ under the action of $H$ is by the average theorem equal to $\op{Sum}(\pi_H(\ol{\mathcal{O}})) \in H$. Since $H = N \oplus K$ we have that $\op{Sum}(\pi_H(\ol{\mathcal{O}})) = n_0 + k_0$ for unique $n_0 \in N, k_0 \in K$. 
 
 
 Let $S_N, S_K, S_H$ denote the descent of $S$ to $G/N$, $G/K$, and $G/H$, respectively. These are all bijections by our general theory. Since $K \subset H$, we get that $S_K$ is equivariant with respect to $\pi_K(H) \cong N$, and similarly $S_N$ is equivariant with respect to $\pi_N(H) \cong  K$. Let $\mathcal{O}_N, \mathcal{O}_K,$ and $\mathcal{O}_H$ denote the descent of $\mathcal{O}$ to these respective quotients. I claim that \begin{align*}
