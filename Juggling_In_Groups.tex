@@ -52,9 +52,9 @@
 \newpage
 
 \begin{abstract}
-Juggling patterns have an intimate relationship with time. The construction of juggling patterns largely means carefully managing each throw's relationship to time, when is a ball thrown, and when is it caught. The study of this careful management of time has lead to a wealth of wonderful research on the mathematics of juggling. There are connections to combinatorics, algebraic geometry, graph theory, Markov chains, topological braids, and more. 
+Juggling patterns have an intimate relationship with time. The construction of juggling patterns largely means carefully managing each throw's relationship to time, namely when each ball is thrown and caught. The study of this careful management of time has lead to a wealth of wonderful research on the mathematics of juggling. There are connections to combinatorics, algebraic geometry, graph theory, Markov chains, topological braids, and more. 
 
-Up to this point, all these explorations have had the same basic setting for time, thinking of juggling patterns as permutations on the integers, where the integers index ticks of a juggler's clock. Here we generalize the notion of periodic juggling patterns to equivariant bijections on a group $G$, letting $G$ play the role of time. In the case $G = \Z^d$, we explore the notion of time moving in multiple dimensions, and a deeper study of the case $G = \Z$ yields results on patterns moving forwards and backwards in time. Generalizations of the average theorem and the correspondence with affine permutations are also included.
+Up to this point, all these explorations have had the same basic setting for time, thinking of juggling patterns as permutations on the integers, where the integers index ticks of a juggler's clock. Here we generalize the notion of periodic juggling patterns to equivariant bijections on a group $G$, letting $G$ play the role of time. In the case $G = \Z^d$, we explore the notion of time moving in multiple dimensions, and a deeper study of the case $G = \Z$ yields results on patterns moving forwards and backwards in time. We generalize the average theorem (counting the number of balls in a pattern), the correspondence with affine permutations, and study the group structure of juggling patterns.
 \end{abstract}
 
 \section{A review of regular siteswaps}
@@ -62,9 +62,9 @@ Up to this point, all these explorations have had the same basic setting for tim
 
 
 
-The only necessary mathematical background is a familiarity with the basics of groups and group actions, and some familiarity with taking quotients by group actions. If you want a more concrete introduction to the mathematization of juggling and some motivation for where this all comes from, there are a number of great resources. Burkhard Polster has written a number of great articles and a \underline{\textcolor{blue}{\href{https://www.qedcat.com/books.html}{book on the subject}}} \cite{polster_book}, with a great survey freely available \underline{\textcolor{blue}{\href{https://www.qedcat.com/articles/juggling_survey.pdf}{online}}}, and a \underline{\textcolor{blue}{\href{https://youtu.be/VsQ-OPIZ5kg}{youtube video}}} summarizing the basics. I myself am quite partial to \underline{\textcolor{blue}{\href{https://youtu.be/38rf9FLhl-8}{the lecture}}} Allen Knutson gave at Cornell though that's a longer time commitment at one hour. I won't be discussing state diagrams though they are very interesting.
+The only necessary mathematical background is a familiarity with the basics of groups and group actions, and some familiarity with taking quotients by group actions. If you want a more concrete introduction to the mathematization of juggling and some motivation for where this all comes from, there are a number of great resources. Burkhard Polster has written a number of great articles and a \underline{\textcolor{blue}{\href{https://www.qedcat.com/books.html}{book on the subject}}} \cite{polster_book}, with a great survey freely available \underline{\textcolor{blue}{\href{https://www.qedcat.com/articles/juggling_survey.pdf}{online}}}, and a \underline{\textcolor{blue}{\href{https://youtu.be/VsQ-OPIZ5kg}{youtube video}}} summarizing the basics. I myself am quite partial to \underline{\textcolor{blue}{\href{https://youtu.be/38rf9FLhl-8}{the lecture}}} Allen Knutson gave at Cornell. I won't be discussing state diagrams though they are very interesting.
 
-Let's recall the results on juggling patterns that we wish to generalize. We'll prove all of them later in a more general context, but we just remark on them here first. Throughout, we will only analyze periodic juggling patterns, and simply will not discuss aperiodic patterns. We recall that juggling patterns can be mathematized by assuming a juggler is making throws evenly spaced in time to the ticks of a metronome. Assigning an integer to every tick of the metronome (including ticks in the past) gives an association between the integers $\Z$ and the beats of a juggling pattern. If we assume that a juggler throws at most one ball on any given beat, then a juggling pattern may be given either by specifying a throw heights function $T : \Z \to \N$, or a juggling function $S : \Z \to \Z$, with the relationship $S(i) = T(i) + i$, so that $S$ records when balls are thrown and caught, and $T$ records how high balls are thrown (the convention is $S(i) = i$ when no ball is thrown on beat $i$, for a throw height $T(i) = i - i = 0$). For example, if $S(3) = 7$, we threw a ball on beat 3 that was next thrown on beat 7, and so it was in the air not being manipulated for $T(3) = 4$ beats of time. We are going to allow the balls to be thrown backwards in time as well, so we'll allow $T : \Z \to \Z$. 
+Let's recall the results on juggling patterns that we wish to generalize. We'll prove all of them later in a more general context, but we just remark on them here first. Throughout, we will only analyze periodic juggling patterns, and simply will not discuss aperiodic patterns. We recall that juggling patterns can be mathematized by assuming a juggler is making throws evenly spaced in time to the ticks of a metronome. Assigning an integer to every tick of the metronome (including ticks in the past) gives an association between the integers $\Z$ and the beats of a juggling pattern. If we assume that a juggler throws at most one ball on any given beat, then a juggling pattern may be given either by specifying a throw heights function $T : \Z \to \N$, or a juggling function $S : \Z \to \Z$, with the relationship $S(i) = T(i) + i$, so that $S$ records when balls are thrown and caught, and $T$ records how high balls are thrown (the convention is $S(i) = i$ when no ball is thrown on beat $i$, for a throw height $T(i) = i - i = 0$). For example, if $S(3) = 7$, we threw a ball on beat 3 that was next thrown on beat 7, and so it was in the air not being manipulated for $T(3) = 4$ beats of time. I often think of $T$ as representing instructions to the juggler "throw the ball at this height now" while $S$ records the results of executing those instructions, tracking where the balls go over time. We are going to allow the balls to be thrown backwards in time as well, so we'll allow $T : \Z \to \Z$. 
 
 \begin{figure}[ht]
 \includegraphics[scale=0.7, center]{531_function}
@@ -125,13 +125,15 @@ If we allow $T$ to have negative values, then it turns out for any given ball in
 \[
 n \cdot (F - B) = \sum \limits_{i=0}^{n-1} T(i).
 \]
+We will discover these results as an orbit-stabilizer pairing.
+
 
 Let's get cracking!
 
 \section{The general theory}
 Our main method of generalizing the juggling discussion is via the symmetry inherent in diagrams like figure 1 that arise from periodic juggling functions. We will encode this symmetry as a kind of action of a group on the pattern, and so we'll endeavor to reframe much of the above discussion in the language of groups and group actions.
 
-Our first task is to obtain a proper analogue of throw heights and juggling functions, and analyze the translation from one to the other. Throughout, if $A$ and $B$ are two sets we will let $\Hom(A, B)$ denote the set of all functions from $A$ to $B$. If a group $G$ acts on a set $X$, then we have an action map $\sigma : G \times X \to X$. We will write $\sigma(g, x) = g \cdot x$. Then for any set $Y$, we get a map
+Our first task is to obtain a proper analogue of throw heights and juggling functions, and analyze the translation from one to the other. Throughout, if $A$ and $B$ are two sets we will let $\Hom(A, B)$ denote the set of all functions from $A$ to $B$. If a group $G$ acts on a set $X$, then we have an action map $\sigma : G \times X \to X$. We will have occasion to write this as $\sigma(g, x) = g \cdot x$. Then for any set $Y$, we get a map
 \[
 \Hom(Y, G) \times \Hom(Y, X) \cong \Hom(Y, G \times X) \xrightarrow{\sigma_*} \Hom(Y, X),
 \] sending a pair of maps $(T, f)$ to the map $S = \sigma_*(T, f)$ defined by $S(y) = T(y) \cdot f(y)$. This is the philosophy of the Yoneda lemma at work, and also shows that this association is natural in $X, Y$ and $G$. 
@@ -165,24 +167,24 @@ Since the first condition holds, we get that $g^{-1}h = \id$, and multiplying by
 Now we determine to what degree we can translate between throw heights and juggling functions.
 
 \begin{lemma}
-If the action of $G$ on $X$ is free, then for any $f : Y \to X$ the function $\gamma_f : \Hom(Y, G) \to \Hom(Y, X)$ is injective. If the action is transitive, then map $\gamma_f$ is surjective. These both become if and only if statements in the case $Y = X$ and $f = \id$ (or more generally if $f$ is a bijection).
+If the action of $G$ on $X$ is free, then for any $f : Y \to X$ the function $\gamma_f : \Hom(Y, G) \to \Hom(Y, X)$ is injective. If the action is transitive, then the map $\gamma_f$ is surjective. These both become if and only if statements in the case $Y = X$ and $f = \id$ (or more generally if $f$ is a bijection).
 \end{lemma}
 
 \begin{proof}
-First let's suppose that $G \curvearrowright X$ is free, and show that $\gamma_f$ is injective. Let's suppose that $\gamma_f(T) = \gamma_f(T')$ then for all $y \in Y$ we have that 
+First let's suppose that the action of $G$ on $X$ is free, and show that $\gamma_f$ is injective. Let's suppose that $\gamma_f(T) = \gamma_f(T')$ then for all $y \in Y$ we have that 
 \begin{align*}
 T(y) \cdot f(y) &= T'(y) \cdot f(y) \implies \\
 T(y) &= T'(y),
 \end{align*}
 by the preceding lemma.
 
-Now let's suppose $G \curvearrowright X$ is transitive, and show that $\gamma_f$ is surjective. Let $S : Y \to X$ be any function. We wish to build a function $T : Y \to X$ such that $T(y) \cdot f(y) = S(y)$. By transitivity, there always exists some group element $g$ such that $g \cdot f(y) = S(y)$. Picking some such $g$ for each $y \in Y$ (using the axiom of choice) yields the desired function $T$. 
+Now let's suppose the action of $G$ on $X$ is transitive, and show that $\gamma_f$ is surjective. Let $S : Y \to X$ be any function. We wish to build a function $T : Y \to X$ such that $T(y) \cdot f(y) = S(y)$. By transitivity, there always exists some group element $g$ such that $g \cdot f(y) = S(y)$. Picking some such $g$ for each $y \in Y$ (using the axiom of choice) yields the desired function $T$. 
 
 Now we show the reverse implications hold in the case $Y = X$ and $f = \id$. First let's suppose that $\gamma_{\id}$ is injective. Suppose that we have an equality $g_0 \cdot x_0 = x_0$. Let $T : X \to G$ be the function given by $T(x_0) = g_0$, and $T(x) = \id$ for $x \neq x_0$. Let $e : X \to G$ be the function given by $e(x) = \id$ for all $x \in X$. Then the assumption yields that $\gamma_{\id}(T) = \gamma_{\id}(e)$, so by assumption we have that $T = e$. Thus, we have that
 \[
 \id = e(x_0) = T(x_0) = g_0.
 \]
-Thus, the action is free. Now let's suppose that $\gamma_{\id}$ is surjective and show that $G \curvearrowright X$ is transitive. Let $x_1, x_2 \in X$. Let $S : X \to X$ be any function with $S(x_1) = x_2$. Then by assumption there exists a function $T : X \to G$ such that $S = \gamma_{\id}(T)$. Applying both functions to $x_1$, we obtain
+Thus, the action is free. Now let's suppose that $\gamma_{\id}$ is surjective and show that the action of $G$ on $X$ is transitive. Let $x_1, x_2 \in X$. Let $S : X \to X$ be any function with $S(x_1) = x_2$. Then by assumption there exists a function $T : X \to G$ such that $S = \gamma_{\id}(T)$. Applying both functions to $x_1$, we obtain
 \[
 x_2 = S(x_1) = \gamma_{\id}(T)(x_1) = T(x_1) \cdot x_1.
 \]
@@ -297,88 +299,196 @@ conj_H(h, T(y)) &= T(h \cdot y),
 the desired commutativity. 
 \end{proof}
 
-Now we explore how this data interacts with group homomorphisms. First suppose we have a group $G$ acting on a set $X$, and $G$ is a subgroup of 
+Now we investigate how these constructions behave under group homomorphisms. We pay particular attention to surjective group homomorphisms, as passing to the quotient is the setting of the permutation test.
 
-For the work that follows, we recall an important fact about quotient spaces (indeed, this is their defining property) that we will give without proof.
-\begin{theorem}
-Let the group $G$ act on the set $X$, and let $Z$ be another set. Then for any map $f : X \to Z$ such that $f(g \cdot x) = f(x)$ for all $x \in X, g \in G$, there is a unique map $\widetilde{f} : X/G \to Z$ such that the following diagram commutes
+To do this, let $\varphi : G \to K$ be a homomorphism of groups. Then we have a restriction functor $\varphi^* : K-\text{Set} \to G-\text{Set}$ which takes a $K$-set $Y$ to the $G$-set $\varphi^*(Y)$ which is the same set with the action $g \cdot y := \varphi(g) \cdot y$. Under this restriction mapping, any $K$-equivariant map of $K$-sets is also $G$-equivariant, so this is indeed a functor. 
+
+Furthermore, this functor admits a left adjoint, a kind of induced representation which we will denote $\varphi_* : K-\text{Set} \to G-\text{Set}$ given as follows. Let $X$ be a $G$-set. We start with $K \times X$, and note that for any $g \in G$ we should have the compatibility $k \cdot (g \cdot x) = (k\varphi(g)) \cdot x$. That is, if we let $G$ act on $K \times X$ diagonally via
 \[
-\begin{tikzcd}
-X\ar[d, "\pi"] \ar[dr, "f"]  \\
-X/G \ar[r, "\exists ! \widetilde{f}"', dashed] & Z
-\end{tikzcd}
+	g \cdot (k, x) = (k\varphi(g)^{-1}, gx)
 \]
+then the orbit space 
+$K \times X/G$ is the desired set for $\varphi_*(G)$. Let $\pi : K \times X \to \varphi_*(G)$ be the projection map. The action of $K$ is defined via the commutative diagram
+\[
+	\begin{tikzcd}
+		K \times K \times X \ar[r, "(m \text{, } \id)"] \ar[d, "(\id \text{, } \pi)"] & K \times X \ar[d, "\pi"]  \\
+		K \times \varphi_*(G) \ar[r, dashed] & \varphi_*(G)
+	\end{tikzcd}
+\]
+You can check that the dashed arrow exists by showing that the top-right composite is constant on the fibers of $(\id, \pi)$. 
+
+We investigate the behavior of this adjoint when $\varphi$ is surjective. First let us consider the unique homomorphism to the trivial group $1 : G \to 1$. I claim that $1_*(Y) = Y/G$. To see this, first note that since 1 is the trivial group, the forgetful functor $1-Set \to Set$ is actually an isomorphism of categories.  Furthermore, if $Y$ is a $G$-set, then a $G$-equivariant map $f : Y \to 1^*(Z)$ is exactly a $G$-invariant map. That is, we have
+\begin{align*}
+	\Hom_{Set}(1_*(Y), Z) &= \Hom_{1-Set}(1_*(Y), Z)\\
+	&\cong \Hom_{G-Set}(Y, 1^* Z) \\
+	&\cong \{G-\text{invariant } f : Y \to Z\},
+\end{align*}
+which is the same universal property as $Y/H$. The Yoneda lemma yields the desired natural isomorphism. 
+
+Similarly, if we consider the map $1 : 1 \to G$, then $1^*$ is the forgetful functor $G-Set \to Set$, and $1_*$ is the functor $Y \mapsto G \times Y$, where the action is multiplication in the $G$ factor. 
+
+Now let $\varphi : G \to K$ be a surjective group homomorphism, and let $H = \ker(\varphi)$. Then we have a Cartesian square
+\[
+	\begin{tikzcd}
+		H \ar[r, hookrightarrow, "\iota"] \ar[d, twoheadrightarrow, "1"] \ar[dr, phantom, very near start, "\lrcorner"] & G \ar[d, twoheadrightarrow, "\varphi"] \\
+		1 \ar[r, hookrightarrow, "1"] & K
+	\end{tikzcd}
+\]
+That is, $\iota$ expresses $H$ as $\varphi^{-1}(1)$. 
+
+Now let $Y$ be a $G$-set. To investigate $\varphi_*(Y)$, we might first try to understand $1^* \circ \varphi_*(Y)$, as this will give the underlying set of $\varphi_*(Y)$. To an algebraic geometer, one is immediately lead to wonder if we get the same result going around the other way. That is, do we have an isomorphism, $1_* \circ \iota^* \cong 1^* \circ \varphi_*$? If so this would yield a formula $\varphi_*(Y) \cong Y/H$, which makes sense as $K \cong G/H$. 
+
+ In fact we do have this isomorphism, under conditions we can state in greater generality.
+\begin{theorem}
+	Consider a Cartesian square of group homomorphisms
+	\[
+		\begin{tikzcd}
+			\wh{G} \ar[r, "\wh{\iota}"] \ar[d, "\wh{\varphi}"] \ar[dr, phantom, very near start, "\lrcorner"] & G \ar[d, "\varphi"] \\
+		\wh{K} \ar[r, "\iota"] & K
+		\end{tikzcd}
+	\]
+	 That is, $\wh{\iota}$ expresses $\wh{G}$ as $\varphi^{-1}(\iota(\wh{K}))$. Then we have a natural transformation 
+	\[
+		\wh{\varphi}_* \circ \wh{\iota}^* \to \iota^* \circ \varphi_*
+	\]
+	The components of this natural transformation are surjective when the vertical arrows are, and injective when the horizontal arrows are, so an isomorphism when both conditions hold.
 \end{theorem}
 
-
-Now we wish to generalize the permutation test. To do that, we first need a lemma that lets us descend all the data of juggling patterns to quotient spaces. 
-\begin{lemma}\label{throw_heights_descend}
-Leg $G$ be a group, and let $H \subset G$ be a normal subgroup. Let $\pi_G : G \to G/H$ denote the quotient homomorphism. Suppose that $G$ acts on the sets $X$ and $Y$. Suppose that $S, f : Y \to X$ and $T : Y \to G$ are related by $S(y) = T(y) \cdot f(y)$, that $S$ and $f$ are both $H$-equivariant, and that $T(h \cdot y) = hT(y)h^{-1}$ for all $h \in H, y \in Y$ (this is the situation of lemma \ref{equivariance_throw_heights}). Then the actions, juggling function, and throw heights all descend to the quotient. That is, we have diagrams
-\[
-\begin{tikzcd}
-G \times Y \ar[d, "\tau"] \ar[r, "(\pi_G \text{, } \pi_Y)"] & G/H \times Y/H \ar[d, dashed, "\widetilde{\tau}"] \\
-Y \ar[r, "\pi_Y"] & Y/H
-\end{tikzcd}
-\]
-\[
-\begin{tikzcd}
-G \times X \ar[d, "\sigma"] \ar[r, "(\pi_G \text{, } \pi_X)"] & G/H \times X/H \ar[d, dashed, "\widetilde{\sigma}"] \\
-X \ar[r, "\pi_X"] & X/H
-\end{tikzcd}
-\]
-That is, the actions descend to the quotient. We also have
-\[
-\begin{tikzcd}
-Y \ar[d, "\pi_Y"] \ar[r, "S"] & X \ar[d, "\pi_X"] \\
-Y/H \ar[r, dashed, "\widetilde{S}"] & X/H
-\end{tikzcd}
-\]
-\[
-\begin{tikzcd}
-Y \ar[d, "\pi_Y"] \ar[r, "f"] & X \ar[d, "\pi_X"] \\
-Y/H \ar[r, dashed, "\widetilde{f}"] & X/H
-\end{tikzcd}
-\]
-That is, the juggling function descends to the quotient. We also have
-\[
-\begin{tikzcd}
-Y  \ar[r, "T"] \ar[d, "\pi_Y"] & G \ar[d, "\pi_G"] \\
-Y/H \ar[r, dashed, "\widetilde{T}"] & G/H
-\end{tikzcd}
-\]
-related by 
-\[
-\widetilde{S}(\ol{y}) = \widetilde{T}(\ol{y}) \cdot \widetilde{f}(\ol{y})
-\]
-for all $\ol{y} \in Y/H$. 
-
-In the case that $G$ is abelian, or just $H \subset Z(G)$, we get that $\widetilde{T}$ lifts to a map $T' : Y/H \to G$ such that 
-\[
-\begin{tikzcd}
-Y  \ar[r, "T"] \ar[d, "\pi_Y"] & G \ar[d, "\pi_G"] \\
-Y/H \ar[r, "\widetilde{T}"'] \ar[ur, dashed, "T'"'] & G/H
-\end{tikzcd}
-\]
-commutes.
-\end{lemma}
-
 \begin{proof}
-Let's first show that the dashed arrow $\widetilde{\tau}$ exists, descending the action. That is, for any  $g \in G$, $h_1, h_2 \in H$, and $y \in Y$ we must show that \[\pi_Y(g \cdot y) = \pi_Y\Big((h_1g) \cdot (h_2 \cdot y)\Big).\] To do this, we note that 
-\begin{align*}
-(h_1g) \cdot (h_2 \cdot y) &= (h_1gh_2) \cdot y \\
-	&= (h_1gh_2g^{-1}g) \cdot y \\
-	&= (h_1h_3g) \cdot y && \text{(since $H$ is normal, $gh_2g^{-1} \in H$)} \\
-	&= (h_1h_3) \cdot [g \cdot y].
-\end{align*}
-Thus, $[h_1g] \cdot [h_2 \cdot y]$ and $g \cdot y$ are in the same $H$-orbit, and so yield the same element in $Y/H$, as desired, and so the map $\widetilde{\tau}$ exists making its diagram commute. The exact same reasoning on $X$ shows that $\widetilde{\sigma}$ exists making its diagram commute. 
+	First we show the existence of the natural transformation for any commuting square, not just Cartesian squares. This is abstract nonsense. Namely, we have
+	\begin{align*}
+		\Hom_{\wh{K}-Set}(\wh{\varphi}_* \circ \wh{\iota}^*, \iota^* \circ \varphi_*) &\cong \Hom_{\wh{G}-Set}(\wh{\iota}^*, \wh{\varphi}^* \circ \iota^* \circ \varphi*) \\
+		&\cong \Hom_{\wh{G}-Set}(\wh{\iota}^*, \wh{\iota}^* \circ \varphi^* \circ \varphi*) && \text{(Composite of adjoints is adjoint of composite)}\\
+		&\xleftarrow{\iota^*} \Hom_{G-Set}(\id, \varphi^* \circ \varphi_*) \\
+		&\cong \Hom_{K-set}(\varphi_*, \varphi_*) \ni \id.
+	\end{align*}
 
-To show that the juggling function descends, we must show that for any $y \in Y, h \in H$ that $\pi_X(S(h \cdot y)) = \pi_X(S(y))$, that is that these two elements are in the same $H$-orbit on $X$. We compute
+	To show that this map is actually an isomorphism in this case, we have to unwrap the definitions (just like results where limits and colimits commute are very category-specific).
+
+	Let $Y$ be a $G$-set. Then we have that 
+	\begin{align*}
+		\wh{\varphi}_* \circ \wh{\iota}^*(Y) &\cong \frac{\wh{K} \times Y}{\wh{G}} \\
+		\iota^* \circ \varphi_*(Y) &\cong \frac{K \times Y}{G}.
+	\end{align*}
+The natural map sits in a commutative diagram
 \[
-\pi_X(S(h \cdot y)) = \pi_X (h \cdot S(y)) = \pi_X(S(y)),
+	\begin{tikzcd}
+		\wh{K} \times Y \ar[r, "(\iota \text{, } \id)"] \ar[d, "\pi"] & K \times Y \ar[d, "\pi"] \\
+		\frac{\wh{K} \times Y}{\wh{G}} \ar[r, dashed, "\psi"] & \frac{K \times Y}{G}
+	\end{tikzcd}
 \]
-as desired. Thus $\widetilde{S}$ exists making its diagram commute, and the exact same reasoning holds for $f$. 
+Let's first show that $\psi$ is surjective when the vertical arrows are. Let $y_* = \pi(k, y) \in \varphi_*(Y)$. Then we have that $k = \varphi(g)$ for some $g \in G$. Note that 
+\begin{align*}
+	y_* &= \pi(k, y) \\
+	&= \pi(k\varphi(g)^{-1}, gy) \\
+	&= \pi(1, gy) \\
+	&= \pi \circ (\iota, \id)(1, gy) \\
+	&= \psi \circ \pi(1, gy),
+\end{align*}
+so $y_*$ is in the image of $\psi$, and surjectivity holds. 
 
-Now we look at the throw heights. First, in the case that $H \subset Z(G)$, we recall that $T(h \cdot y) = T(y)$ for all $h \in H, y \in Y$. That is, $T$ is constant on the orbits of $H$, so the map $T'$ exists, and we can define $\widetilde{T} = \pi_G \circ T'$. 
+Now let's show that $\psi$ is injective when the horizontal arrows are. Indeed, suppose $\psi \circ \pi(\wh{k}_1, y_1) = \psi \circ \pi(\wh{k}_2, y_2)$. Then there is some $g \in G$ with 
+\[
+	(\iota(\wh{k}_2), y_2) = (\iota(\wh{k}_1 )\varphi(g), g^{-1}y_1) \in K \times Y
+\]
+Then we have that $\varphi(g) = \iota(\wh{k}_1^{-1}\wh{k}_2)$. Since the diagram is Cartesian, we have that $g = \wh{\iota}(\wh{g})$ for some $\wh{g} \in \wh{G}$. Then we have
+\begin{align*}
+	\iota \circ \wh{\varphi}(\wh{g}) &= \varphi \circ \wh{\iota}(\wh{g}) \\
+	&= \iota(\wh{k}_1^{-1} \wh{k}_2).
+\end{align*}
+Since $\iota$ is injective, we get that 
+\[
+	\wh{\varphi}(\wh{g}) = \wh{k}_1^{-1} \wh{k}_2
+\]
+Thus, we have that 
+\begin{align*}
+	\pi(\wh{k}_1, y_1) &= \pi(\wh{k}_1 \wh{\varphi}(\wh{g}, \wh{\iota}(\wh{g})y_1)) \\
+	&= \pi(\wh{k}_1\wh{k}_1^{-1} \wh{k}_2, g^{-1}y_1) \\
+	&= \pi(\wh{k}_2, y_2)
+\end{align*}
+where the last equality holds by definition of $g$. This establishes the desired injectivity.
+\end{proof}
+
+% For the work that follows, we recall an important fact about quotient spaces (indeed, this is their defining property) that we will give without proof.
+% \begin{theorem}
+% Let the group $G$ act on the set $X$, and let $Z$ be another set. Then for any map $f : X \to Z$ such that $f(g \cdot x) = f(x)$ for all $x \in X, g \in G$, there is a unique map $\widetilde{f} : X/G \to Z$ such that the following diagram commutes
+% \[
+% \begin{tikzcd}
+% X\ar[d, "\pi"] \ar[dr, "f"]  \\
+% X/G \ar[r, "\exists ! \widetilde{f}"', dashed] & Z
+% \end{tikzcd}
+% \]
+% \end{theorem}
+
+
+% Now we wish to generalize the permutation test. To do that, we first need a lemma that lets us descend all the data of juggling patterns to quotient spaces. 
+% \begin{lemma}\label{throw_heights_descend}
+% Leg $G$ be a group, and let $H \subset G$ be a normal subgroup. Let $\pi_G : G \to G/H$ denote the quotient homomorphism. Suppose that $G$ acts on the sets $X$ and $Y$. Suppose that $S, f : Y \to X$ and $T : Y \to G$ are related by $S(y) = T(y) \cdot f(y)$, that $S$ and $f$ are both $H$-equivariant, and that $T(h \cdot y) = hT(y)h^{-1}$ for all $h \in H, y \in Y$ (this is the situation of lemma \ref{equivariance_throw_heights}). Then the actions, juggling function, and throw heights all descend to the quotient. That is, we have diagrams
+% \[
+% \begin{tikzcd}
+% G \times Y \ar[d, "\tau"] \ar[r, "(\pi_G \text{, } \pi_Y)"] & G/H \times Y/H \ar[d, dashed, "\widetilde{\tau}"] \\
+% Y \ar[r, "\pi_Y"] & Y/H
+% \end{tikzcd}
+% \]
+% \[
+% \begin{tikzcd}
+% G \times X \ar[d, "\sigma"] \ar[r, "(\pi_G \text{, } \pi_X)"] & G/H \times X/H \ar[d, dashed, "\widetilde{\sigma}"] \\
+% X \ar[r, "\pi_X"] & X/H
+% \end{tikzcd}
+% \]
+% That is, the actions descend to the quotient. We also have
+% \[
+% \begin{tikzcd}
+% Y \ar[d, "\pi_Y"] \ar[r, "S"] & X \ar[d, "\pi_X"] \\
+% Y/H \ar[r, dashed, "\widetilde{S}"] & X/H
+% \end{tikzcd}
+% \]
+% \[
+% \begin{tikzcd}
+% Y \ar[d, "\pi_Y"] \ar[r, "f"] & X \ar[d, "\pi_X"] \\
+% Y/H \ar[r, dashed, "\widetilde{f}"] & X/H
+% \end{tikzcd}
+% \]
+% That is, the juggling function descends to the quotient. We also have
+% \[
+% \begin{tikzcd}
+% Y  \ar[r, "T"] \ar[d, "\pi_Y"] & G \ar[d, "\pi_G"] \\
+% Y/H \ar[r, dashed, "\widetilde{T}"] & G/H
+% \end{tikzcd}
+% \]
+% related by 
+% \[
+% \widetilde{S}(\ol{y}) = \widetilde{T}(\ol{y}) \cdot \widetilde{f}(\ol{y})
+% \]
+% for all $\ol{y} \in Y/H$. 
+
+% In the case that $G$ is abelian, or just $H \subset Z(G)$, we get that $\widetilde{T}$ lifts to a map $T' : Y/H \to G$ such that 
+% \[
+% \begin{tikzcd}
+% Y  \ar[r, "T"] \ar[d, "\pi_Y"] & G \ar[d, "\pi_G"] \\
+% Y/H \ar[r, "\widetilde{T}"'] \ar[ur, dashed, "T'"'] & G/H
+% \end{tikzcd}
+% \]
+% commutes.
+% \end{lemma}
+
+% \begin{proof}
+% Let's first show that the dashed arrow $\widetilde{\tau}$ exists, descending the action. That is, for any  $g \in G$, $h_1, h_2 \in H$, and $y \in Y$ we must show that \[\pi_Y(g \cdot y) = \pi_Y\Big((h_1g) \cdot (h_2 \cdot y)\Big).\] To do this, we note that 
+% \begin{align*}
+% (h_1g) \cdot (h_2 \cdot y) &= (h_1gh_2) \cdot y \\
+% 	&= (h_1gh_2g^{-1}g) \cdot y \\
+% 	&= (h_1h_3g) \cdot y && \text{(since $H$ is normal, $gh_2g^{-1} \in H$)} \\
+% 	&= (h_1h_3) \cdot [g \cdot y].
+% \end{align*}
+% Thus, $[h_1g] \cdot [h_2 \cdot y]$ and $g \cdot y$ are in the same $H$-orbit, and so yield the same element in $Y/H$, as desired, and so the map $\widetilde{\tau}$ exists making its diagram commute. The exact same reasoning on $X$ shows that $\widetilde{\sigma}$ exists making its diagram commute. 
+
+% To show that the juggling function descends, we must show that for any $y \in Y, h \in H$ that $\pi_X(S(h \cdot y)) = \pi_X(S(y))$, that is that these two elements are in the same $H$-orbit on $X$. We compute
+% \[
+% \pi_X(S(h \cdot y)) = \pi_X (h \cdot S(y)) = \pi_X(S(y)),
+% \]
+% as desired. Thus $\widetilde{S}$ exists making its diagram commute, and the exact same reasoning holds for $f$. 
+
+% Now we look at the throw heights. First, in the case that $H \subset Z(G)$, we recall that $T(h \cdot y) = T(y)$ for all $h \in H, y \in Y$. That is, $T$ is constant on the orbits of $H$, so the map $T'$ exists, and we can define $\widetilde{T} = \pi_G \circ T'$. 
 
 In general with $H$ a normal subgroup, we again let $h \in H$ and $y \in Y$. We need to show that $\pi_G(T(h \cdot y)) = \pi_G(T(y))$, that is the elements $T(h \cdot y)$ and $T(y)$ differ by left multiplication by an element of $H$. We compute
 \begin{align*}
@@ -401,7 +511,7 @@ as desired.
 
 
 
-\end{proof}
+% \end{proof}
 
 Here is the corresponding result for the permutation test.
 \begin{theorem}\label{permutation_test}
@@ -749,7 +859,7 @@ k & \text{if } k \not \in \op{im}(\iota) \\
 It may be quickly verified that $\iota_*$ is a homomorphism, and it sends $H$-equivariant permutations to $\iota(H)$-equivariant permutations. Thus, we have a functor $\op{Swap}_{-}(-)$ from the category of pairs $(G, H)$ with $H \subset G$ a subgroup, where a morphism $(G, H) \to (G', H')$ is an inclusion $G \hookrightarrow G'$ sending $H$ isomorphically to $H'$. Note that for the subcategory of Abelian groups, $\iota_*$ preserves those siteswaps satisfying the finiteness condition for the average theorem.
 
 
-We have two important pieces of data defining elements in $\op{Swap}_H(G)$. First, we have the group $\op{Perm}(G/H)$ of permutations of $G/H$ (just set permutations, not group isomorphisms). We have a projection function $P : \op{Swap}_H(G) \to \op{Perm}(G/H)$ where $P(S)$ is the descent of $S$ to $\widetilde{S} : G/H \to G/H$. As we've shown previously, $P$ is a homomorphism. In fact, 
+We have two important pieces of data defining elements in $\op{Swap}_H(G)$. First, we have the group $\op{Perm}(G/H)$ of permutations of $G/H$ (just set permutations, not group isomorphisms). We have a projection function $P : \op{Swap}_H(G) \to \op{Perm}(G/H)$ where $P(S)$ is the descent of $S$ to $\widetilde{S} : G/H \to G/H$. As we've shown previously, $P$ is a homomorphism.
 
 The second important piece of data is the throw heights function. Indeed, the throw heights function uniquely determines the siteswap, so it's relevant to see what happens to the throw heights under composition. For this, we have the following lemma:
 
@@ -1115,6 +1225,8 @@ Then any section $f : \op{Perm}(G/H) \to \op{Swap}_H(G)$ as given in the main bo
 Then we have that $f(r) \circ S$ induces the same permutation as $r$, but with throw sum function given by $g$. I claim that these form a set of conjugacy class representatives for $\op{Swap}_H(G)$.
 
 Thus, if $A$ is an aribtrary siteswap, then we know that $P(A)$ is conjugate to exactly one $r \in R$. If we let $S$ be constructed as above with $g$ the throw heights function of $A$ then the results of this lemma apply to $A$ and $f(r) \circ S$ and so these siteswaps are conjugate, as desired.
+
+\end{subsection}
 
 \begin{subsection}{An Example}
 Let's work through one of these groups in a manner similar to affine permutations. Let's let $G = \Z^2$, and let $H = n\Z \times m\Z$. Then we have that $G/H \cong \Z/n \times \Z/m$, and so $|G/H| = nm$. We may think of throws as vectors pointing from the throw's origin to the throw's destination. The action of $\op{Perm}(G/H)$ is then by permuting these vectors. 
